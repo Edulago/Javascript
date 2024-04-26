@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        label, input, button, p {
+            margin-bottom: 10px;
+        }
+    </style>
+    <script>
+        function verificarMaiorValor() {
+          // Obter os valores dos inputs
+          var valorInput1 = document.getElementById('input1').value;
+          var valorInput2 = document.getElementById('input2').value;
+    
+          // Converter os valores para números
+          valorInput1 = parseFloat(valorInput1);
+          valorInput2 = parseFloat(valorInput2);
+    
+          // Verificar o maior valor
+          var resultado = document.getElementById('resultado');
+          if (isNaN(valorInput1) || isNaN(valorInput2)) {
+            resultado.textContent = 'Por favor, insira valores numéricos válidos.';
+          } else {
+            var maiorValor = Math.max(valorInput1, valorInput2);
+            resultado.textContent = 'O maior valor é: ' + maiorValor;
+          }
+        }
+    </script>
+</head>
+<body>
+    <label for="input1">Primeiro</label>
+    <input type="text" id="input1">
+
+    <label for="input2">Segundo</label>
+    <input type="text" id="input2">
+
+    <button onclick="verificarMaiorValor()">Verificar Maior Valor</button>
+
+    <p id="resultado"></p>
+</body>
+</html>

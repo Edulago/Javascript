@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operações Matemáticas</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        label, input, button, h3 {
+            margin-bottom: 10px;
+        }
+
+        .operation-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .operation-container h3 {
+            margin: 0 10px; /* Espaçamento ao redor do operador */
+        }
+
+        .operation-container button {
+            margin-left: 10px;
+        }
+    </style>
+    <script>
+        function realizarOperacao(operacao) {
+            var input1 = parseFloat(document.getElementById(operacao + 'Input1').value);
+            var input2 = parseFloat(document.getElementById(operacao + 'Input2').value);
+            var resultado;
+
+            switch (operacao) {
+                case 'soma':
+                    resultado = input1 + input2;
+                    break;
+                case 'subtracao':
+                    resultado = input1 - input2;
+                    break;
+                case 'multiplicacao':
+                    resultado = input1 * input2;
+                    break;
+                case 'divisao':
+                    if (input2 !== 0) {
+                        resultado = input1 / input2;
+                    } else {
+                        alert('Não é possível dividir por zero.');
+                        return;
+                    }
+                    break;
+                default:
+                    alert('Operação desconhecida.');
+                    return;
+            }
+
+            alert('Resultado da ' + operacao + ': ' + resultado);
+        }
+    </script>
+</head>
+<body>
+    <div class="operation-container">
+        <label for="somaInput1"></label>
+        <input type="text" id="somaInput1">
+        <h3>+</h3>
+        <label for="somaInput2"></label>
+        <input type="text" id="somaInput2">
+        <button onclick="realizarOperacao('soma')">Calcular Soma</button>
+    </div>
+
+    <div class="operation-container">
+        <label for="subtracaoInput1"></label>
+        <input type="text" id="subtracaoInput1">
+        <h3>-</h3>
+        <label for="subtracaoInput2"></label>
+        <input type="text" id="subtracaoInput2">
+        <button onclick="realizarOperacao('subtracao')">Calcular Subtração</button>
+    </div>
+
+    <div class="operation-container">
+        <label for="multiplicacaoInput1"></label>
+        <input type="text" id="multiplicacaoInput1">
+        <h3>*</h3>
+        <label for="multiplicacaoInput2"></label>
+        <input type="text" id="multiplicacaoInput2">
+        <button onclick="realizarOperacao('multiplicacao')">Calcular Multiplicação</button>
+    </div>
+
+    <div class="operation-container">
+        <label for="divisaoInput1"></label>
+        <input type="text" id="divisaoInput1">
+        <h3>/</h3>
+        <label for="divisaoInput2"></label>
+        <input type="text" id="divisaoInput2">
+        <button onclick="realizarOperacao('divisao')">Calcular Divisão</button>
+    </div>
+</body>
+</html>

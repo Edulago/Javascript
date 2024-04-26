@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operações Matemáticas</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .operation-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .operation-container input[type="text"] {
+            width: 60px;
+            padding: 5px;
+            margin-right: 10px;
+            box-sizing: border-box;
+        }
+
+        .operation-container .operation-button {
+            background-color: #FF8000;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .operation-container .operation-button:hover {
+            background-color: #EE5000;
+        }
+
+        .result-container {
+            display: flex;
+            align-items: center;
+            width: 100px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        .clear-button {
+            background-color: #FF8000;
+            color: white;
+            border: none;
+            padding: 5px 0;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-left: 10px;
+            width: 50px;
+            height: 50px;
+            text-align: center;
+            font-size: 10px; /* Adicionando tamanho da fonte */
+        }
+
+        .clear-button:hover {
+            background-color: #EE5000;
+        }
+    </style>
+</head>
+<body>
+    <div class="operation-container">
+        <input type="text" id="somaInput1" placeholder="Valor 1">
+        <input type="text" id="somaInput2" placeholder="Valor 2">
+        <button class="operation-button" onclick="realizarOperacao('soma')">+</button>
+        <span>=</span>
+        <div class="result-container" id="somaResult"></div>
+        <button class="clear-button" onclick="limparResultado('soma')">Limpar</button>
+    </div>
+
+    <div class="operation-container">
+        <input type="text" id="subtracaoInput1" placeholder="Valor 1">
+        <input type="text" id="subtracaoInput2" placeholder="Valor 2">
+        <button class="operation-button" onclick="realizarOperacao('subtracao')">-</button>
+        <span>=</span>
+        <div class="result-container" id="subtracaoResult"></div>
+        <button class="clear-button" onclick="limparResultado('subtracao')">Limpar</button>
+    </div>
+
+    <div class="operation-container">
+        <input type="text" id="multiplicacaoInput1" placeholder="Valor 1">
+        <input type="text" id="multiplicacaoInput2" placeholder="Valor 2">
+        <button class="operation-button" onclick="realizarOperacao('multiplicacao')">*</button>
+        <span>=</span>
+        <div class="result-container" id="multiplicacaoResult"></div>
+        <button class="clear-button" onclick="limparResultado('multiplicacao')">Limpar</button>
+    </div>
+
+    <div class="operation-container">
+        <input type="text" id="divisaoInput1" placeholder="Valor 1">
+        <input type="text" id="divisaoInput2" placeholder="Valor 2">
+        <button class="operation-button" onclick="realizarOperacao('divisao')">%</button>
+        <span>=</span>
+        <div class="result-container" id="divisaoResult"></div>
+        <button class="clear-button" onclick="limparResultado('divisao')">Limpar</button>
+    </div>
+
+    <script>
+        function realizarOperacao(operacao) {
+            var input1 = parseFloat(document.getElementById(operacao + 'Input1').value);
+            var input2 = parseFloat(document.getElementById(operacao + 'Input2').value);
+            var resultado;
+
+            switch (operacao) {
+                case 'soma':
+                    resultado = input1 + input2;
+                    break;
+                case 'subtracao':
+                    resultado = input1 - input2;
+                    break;
+                case 'multiplicacao':
+                    resultado = input1 * input2;
+                    break;
+                case 'divisao':
+                    if (input2 !== 0) {
+                        resultado = input1 / input2;
+                    } else {
+                        alert('Não é possível dividir por zero.');
+                        return;
+                    }
+                    break;
+                default:
+                    alert('Operação desconhecida.');
+                    return;
+            }
+
+            document.getElementById(operacao + 'Result').innerText = resultado;
+        }
+
+        function limparResultado(operacao) {
+            document.getElementById(operacao + 'Input1').value = '';
+            document.getElementById(operacao + 'Input2').value = '';
+            document.getElementById(operacao + 'Result').innerText = '';
+        }
+    </script>
+</body>
+</html>
